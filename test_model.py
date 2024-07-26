@@ -1,3 +1,9 @@
+'''
+This is a test file after downloading the model from Azure AI services. This file can predict a person's facial recognition based on a picture and shows the emotion recognition with percentages.
+In this example code, the picture indicates happy, but the program reads sad :(
+'''
+
+
 import tensorflow as tf
 import os
 from PIL import Image, ExifTags
@@ -36,6 +42,7 @@ def update_orientation(image):
         pass
     return image
 
+# Change URL HERE!
 imageFile = "/Users/edwardjefferson/Downloads/images/validation/happy/187.jpg"
 image = Image.open(imageFile)
 image = update_orientation(image)

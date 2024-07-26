@@ -1,3 +1,8 @@
+'''
+This file is for exporting the model from Azure's custom vision. 
+This code is taken from the documentation but still would not work!
+'''
+
 from azure.core.credentials import AzureKeyCredential
 from azure.cognitiveservices.vision.customvision.training import CustomVisionTrainingClient
 import requests

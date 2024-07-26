@@ -1,3 +1,6 @@
+"""
+This file is the same as test_video_model.py but just shows all the percentages instead of the highest one.
+"""
 import cv2
 import tensorflow as tf
 import numpy as np

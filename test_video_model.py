@@ -1,3 +1,8 @@
+'''
+This file can output facial recognition based on a real time video!
+Needs work on the machine learning model.
+'''
+
 import cv2
 import tensorflow as tf
 import numpy as np
@@ -88,12 +93,7 @@ cv2.destroyAllWindows()
 '''
 Notes:
 - Emotion recognition would not work if a person's head is tilted
-- Emotion recognition would not work if a part of the face is covered
-- Sad, surprised dominated the emotion recognition
+- Emotion recognition sometimes would not work if a part of the face is covered
+- Sad & surprised emotions dominated the emotion recognition
 - Happy has a precision of 100% but just won't be recognized when we are actually smilling
-
-- Endpoint & API key
-- Video & video without the red box but with background 
-- Average emotion
-- Azure API stuff for the vocalization for speech to text and text to speech
 '''

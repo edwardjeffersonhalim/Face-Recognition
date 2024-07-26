@@ -1,3 +1,9 @@
+'''
+This file SHOULD read the emotions of a person based on a real time video.
+Courtesy of: https://github.com/ioarun/face-detection-azure
+Code would run and open the camera feed, but encounters an key API and enpoint from Azure.
+'''
+
 import cv2
 import time
 from azure.cognitiveservices.vision.face import FaceClient
