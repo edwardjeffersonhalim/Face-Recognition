@@ -65,6 +65,8 @@ with tf.compat.v1.Session() as sess:
         face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
 
+        frame_with_emotion = frame.copy()
+
         for (x, y, w, h) in faces:
             cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
@@ -82,7 +84,8 @@ with tf.compat.v1.Session() as sess:
             text = f"{label}: {probability:.1f}%"
             cv2.putText(frame, text, (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (36, 255, 12), 2)
 
-        cv2.imshow('Emotion Recognition', frame)
+        combined_frame = np.hstack((frame, frame_with_emotion))
+        cv2.imshow('Emotion Recognition', combined_frame)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
