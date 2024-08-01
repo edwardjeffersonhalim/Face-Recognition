@@ -7,6 +7,7 @@ import cv2
 import tensorflow as tf
 import numpy as np
 from PIL import Image, ExifTags
+import time
 
 # Load model
 graph_def = tf.compat.v1.GraphDef()
@@ -21,6 +22,9 @@ labels = []
 with open(labels_filename, 'rt') as lf:
     for l in lf:
         labels.append(l.strip())
+
+emotion_scores = np.zeros(len(labels))
+emotion_counts = np.zeros(len(labels))
 
 def update_orientation(image):
     try:
@@ -57,6 +61,7 @@ with tf.compat.v1.Session() as sess:
     output_tensor = sess.graph.get_tensor_by_name('model_outputs:0')
 
     while True:
+        start_time = time.time()
         ret, frame = cap.read()
         if not ret:
             break
@@ -77,6 +82,9 @@ with tf.compat.v1.Session() as sess:
             predictions = sess.run(output_tensor, {'Placeholder:0': preprocessed_face})
             predictions = predictions[0]
 
+            emotion_scores += predictions
+            emotion_counts += 1
+
             max_index = np.argmax(predictions)
             label = labels[max_index]
             probability = predictions[max_index] * 100
@@ -92,6 +100,11 @@ with tf.compat.v1.Session() as sess:
 
 cap.release()
 cv2.destroyAllWindows()
+
+average_scores = (emotion_scores / emotion_counts) * 100
+print("\nAverage Emotion Scores:")
+for label, score in zip(labels, average_scores):
+    print(f"{label}: {score:.1f}%")
 
 '''
 Notes:
