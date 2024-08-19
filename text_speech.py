@@ -77,8 +77,7 @@ def main():
 
         selected_voice = voice_options[choice]['lang']
         print(f"You selected: {voice_options[choice]['name']}\n")
-
-        # Main loop for text-to-speech conversion
+        
         while True:
             answer = input("Enter your prompt (Press 'q' to quit): ")
             if answer == "q":
