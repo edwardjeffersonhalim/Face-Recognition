@@ -103,7 +103,8 @@ if __name__ == "__main__":
             output_text(text, sentiment, sentiment_score)
 
 '''
-Positive if the score is greater than 0.
-Negative if the score is less than 0.
-Neutral if the score is exactly 0.
+Key notes for Sentiment Analysis:
+- Positive if the score is greater than 0.
+- Negative if the score is less than 0.
+- Neutral if the score is exactly 0.
 '''
